@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="../assets_main/favicon.ico" type="image/x-icon">
+    <title>Задание 5</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            className: 'open menu',
+            
+            addClass(cls) {
+                const classes = this.className.split(' ');
+                if (!classes.includes(cls)) {
+                    classes.push(cls);
+                    this.className = classes.join(' ').trim();
+                }
+                return this;
+            },
+            
+            removeClass(cls) {
+                const classes = this.className.split(' ');
+                const index = classes.indexOf(cls);
+                if (index !== -1) {
+                    classes.splice(index, 1);
+                    this.className = classes.join(' ').trim();
+                }
+                return this;
+            }
+        };
+        
+        console.log(obj.addClass('new').className); // "open menu new"
+        console.log(obj.removeClass('open').className); // "menu new"
+    </script>
+</body>
+</html>

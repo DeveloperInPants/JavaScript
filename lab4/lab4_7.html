@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="../assets_main/favicon.ico" type="image/x-icon">
+    <title>Задание 7</title>
+</head>
+<body>
+    <script>
+        function getSecondsToday() {
+            const now = new Date();
+            const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            return Math.floor((now - todayStart) / 1000);
+        }
+        
+        console.log(getSecondsToday());
+    </script>
+</body>
+</html>
