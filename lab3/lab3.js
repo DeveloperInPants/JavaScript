@@ -4,7 +4,7 @@
  * @returns {number} Дробная часть числа
  */
 export function getDecimal(num) {
-    const decimal = Math.(num) - Math.floor(Math.(num));
+    const decimal = num - Math.floor(num);
     return parseFloat(decimal.toFixed(10)); // Фиксим проблему с плавающей точкой
 }
 
