@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" class="no-touch">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Text</title>
+    <!-- остальные стили -->
+</head>
+<body>
+    <input type="button" id="hider" value="Спрятать текст">
+    <div id="text">Текст</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hiderButton = document.getElementById('hider');
+            const textElement = document.getElementById('text');
+            
+            hiderButton.addEventListener('click', function() {
+                if (textElement.style.display === 'none') {
+                    // Если текст скрыт, показываем его и меняем кнопку
+                    textElement.style.display = '';
+                    hiderButton.value = 'Спрятать текст';
+                } else {
+                    // Если текст виден, скрываем его и меняем кнопку
+                    textElement.style.display = 'none';
+                    hiderButton.value = 'Показать текст';
+                }
+            });
+        });
+    </script>
+
+    <!-- остальной код страницы -->
+</body>
+</html>
