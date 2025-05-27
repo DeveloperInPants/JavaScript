@@ -2,8 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../assets_main/favicon.ico" type="image/x-icon">
-    <title>Сообщения с кнопками удаления</title>
+    <title>Сообщения с восстановлением</title>
     <style>
         body {
             margin: 10px auto;
@@ -24,6 +23,7 @@
             padding: 10px 20px 10px;
             border-top: solid 2px #c4df9b;
             position: relative;
+            margin-bottom: 10px;
         }
         .remove-button {
             position: absolute;
@@ -37,6 +37,22 @@
             border: none;
             background: transparent;
             cursor: pointer;
+        }
+        #restore-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #restore-button:hover {
+            background: #45a049;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -59,17 +75,28 @@
         </div>
     </div>
 
-    <script>
-        // Находим все кнопки удаления
-        const buttons = document.querySelectorAll('.remove-button');
+    <button id="restore-button">Восстановить удалённые сообщения</button>
 
-        // Добавляем обработчик клика для каждой кнопки
-        buttons.forEach(button => {
+    <script>
+        const container = document.getElementById('messages-container');
+        const restoreButton = document.getElementById('restore-button');
+        let hiddenPanes = []; // Массив для хранения скрытых сообщений
+
+        // Обработчик клика на кнопки удаления
+        document.querySelectorAll('.remove-button').forEach(button => {
             button.addEventListener('click', function() {
-                // Находим родительский элемент .pane и скрываем его
                 const pane = this.closest('.pane');
-                pane.style.display = 'none';
+                pane.classList.add('hidden');
+                hiddenPanes.push(pane); // Сохраняем скрытое сообщение
             });
+        });
+
+        // Обработчик клика на кнопку восстановления
+        restoreButton.addEventListener('click', function() {
+            hiddenPanes.forEach(pane => {
+                pane.classList.remove('hidden');
+            });
+            hiddenPanes = []; // Очищаем массив
         });
     </script>
 </body>
